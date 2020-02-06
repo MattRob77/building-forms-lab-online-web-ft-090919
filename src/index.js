@@ -1,16 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import manageBand from './reducers/manageBand'
+import React, { Component } from 'react';
+import BandsContainer from './containers/BandsContainer';
+import manageBand from './reducers/manageBand';
 
-const store = createStore(manageBand)
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
+const store = createStore(manageBand);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+class App extends Component {
+	render() {
+		return (
+			<Provider store={store}>
+				<div className='App'>
+					<BandsContainer />
+				</div>
+			</Provider>
+		);
+	}
+}
+
+export default App;
